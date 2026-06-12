@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>THE BORING BOT — Money Systems, AI Leverage, Digital Scale</title>
+<meta name="description" content="An AI-leveraged growth lab. Free playbooks on finance hacks, crypto, AI business automation, 24-hour launches, pull marketing & Facebook ads — value first, always." />
+<meta name="theme-color" content="#0a0a0a" />
+
+<!-- Social share / link preview -->
+<meta property="og:type" content="website" />
+<meta property="og:title" content="THE BORING BOT — Make Money Work Harder Than You Do" />
+<meta property="og:description" content="Free playbooks on finance, crypto, AI automation, digital products, 24-hour launches & pull marketing. Steal the systems. Value first, always." />
+<meta property="og:image" content="og-image.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="THE BORING BOT — Make Money Work Harder Than You Do" />
+<meta name="twitter:description" content="Free playbooks on finance, crypto, AI automation & pull marketing. Value first, always." />
+<meta name="twitter:image" content="og-image.png" />
+
+<!-- Favicon (inline SVG bot) -->
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Crect width='48' height='48' rx='10' fill='%230a0a0a'/%3E%3Crect x='11' y='15' width='26' height='20' rx='7' fill='none' stroke='white' stroke-width='2.6'/%3E%3Cline x1='24' y1='9' x2='24' y2='15' stroke='white' stroke-width='2.6' stroke-linecap='round'/%3E%3Ccircle cx='24' cy='8' r='2' fill='white'/%3E%3Ccircle cx='19' cy='25' r='2.4' fill='white'/%3E%3Ccircle cx='29' cy='25' r='2.4' fill='white'/%3E%3Cline x1='19' y1='30.5' x2='29' y2='30.5' stroke='white' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="style.css" />
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+    "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+  }
+}
+</script>
+</head>
+<body>
+
+  <!-- 3D gallery mounts here -->
+  <div id="stage"></div>
+  <div id="vignette"></div>
+  <div id="grain"></div>
+
+  <!-- ====== HEADER ====== -->
+  <header id="topbar">
+    <a class="logo" href="#" aria-label="The Boring Bot">
+      <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="8" y="12" width="32" height="26" rx="9" stroke="white" stroke-width="3.4"/>
+        <line x1="24" y1="5" x2="24" y2="12" stroke="white" stroke-width="3.4" stroke-linecap="round"/>
+        <circle cx="24" cy="4.5" r="2.6" fill="white"/>
+        <circle cx="17.5" cy="25" r="3" fill="white"/>
+        <circle cx="30.5" cy="25" r="3" fill="white"/>
+        <line x1="17" y1="33" x2="31" y2="33" stroke="white" stroke-width="2.6" stroke-linecap="round"/>
+      </svg>
+    </a>
+
+    <button id="soundToggle" class="mono dim">&#9617;&#9617;&#9618; SOUND [<span id="soundState">ON</span>]</button>
+
+    <p class="mono manifesto">THE BORING BOT IS AN AI&#8209;LEVERAGED<br>GROWTH LAB &mdash; MAKING MONEY WORK<br>HARDER THAN YOU DO.</p>
+
+    <div class="mono clocks">
+      <div class="clockrow"><span class="dot">&#9679;</span> MANILA, PH <span class="t" id="clockMNL">--:--</span> GMT+8</div>
+      <div class="clockrow dim"><span class="dot">&#9789;</span> NEW YORK, US <span class="t" id="clockNYC">--:--</span> GMT-4</div>
+    </div>
+
+    <a class="lets-talk" href="#" id="letsTalk">Let's Talk</a>
+  </header>
+
+  <!-- ====== BOTTOM UI ====== -->
+  <div id="viewToggle">
+    <button class="vt-btn active" id="btnGrid" aria-label="Sphere view">
+      <svg viewBox="0 0 18 18"><rect x="1" y="1" width="7" height="7" rx="1"/><rect x="10" y="1" width="7" height="7" rx="1"/><rect x="1" y="10" width="7" height="7" rx="1"/><rect x="10" y="10" width="7" height="7" rx="1"/></svg>
+    </button>
+    <button class="vt-btn" id="btnList" aria-label="List view">
+      <svg viewBox="0 0 18 18"><rect x="1" y="2" width="3" height="2.6" rx="0.8"/><rect x="6" y="2" width="11" height="2.6" rx="0.8"/><rect x="1" y="7.7" width="3" height="2.6" rx="0.8"/><rect x="6" y="7.7" width="11" height="2.6" rx="0.8"/><rect x="1" y="13.4" width="3" height="2.6" rx="0.8"/><rect x="6" y="13.4" width="11" height="2.6" rx="0.8"/></svg>
+    </button>
+  </div>
+
+  <nav id="mainNav">
+    <button class="nav-item active" data-nav="work">Playbooks</button>
+    <button class="nav-item" data-nav="about">About</button>
+    <button class="nav-item" data-nav="contact">Contact</button>
+  </nav>
+
+  <div id="filterWrap">
+    <div id="filterPanel" class="mono"></div>
+    <button id="filterBtn">Filter</button>
+  </div>
+
+  <!-- ====== LIST VIEW ====== -->
+  <section id="listView" aria-hidden="true">
+    <div class="lv-head mono"><span>&#8470;</span><span>PLAYBOOK</span><span>TAGS</span><span>YEAR</span></div>
+    <div id="lvRows"></div>
+  </section>
+
+  <!-- ====== ABOUT ====== -->
+  <section id="aboutView" aria-hidden="true">
+    <div class="about-inner">
+      <p class="mono dim">[ ABOUT ]</p>
+      <h2>Boring systems.<br>Loud results.</h2>
+      <p class="about-copy">I'm obsessed with one thing: making money work harder than I do.
+      I use AI to fast-track output, automate the repetitive 80%, and turn
+      brick&#8209;and&#8209;mortar businesses into digital machines that sell while you sleep.
+      Everything here is value first &mdash; steal the systems, run the playbooks,
+      and when you're ready to scale, you know where to find me.</p>
+      <div class="about-stats mono">
+        <div><b>16+</b><span>OPEN PLAYBOOKS</span></div>
+        <div><b>24H</b><span>OFFER &#8594; LAUNCH</span></div>
+        <div><b>10&#215;</b><span>AI&#8209;LEVERAGED OUTPUT</span></div>
+        <div><b>&#8734;</b><span>AUTOMATION APPETITE</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== DETAIL PAGE ====== -->
+  <article id="detail" aria-hidden="true">
+    <div id="detailHero"></div>
+    <div id="detailScrim"></div>
+    <div id="detailContent">
+      <button id="detailBack" class="mono">&#8592; BACK TO GALLERY</button>
+      <p class="mono d-meta-top"><span id="dSeries"></span><span id="dIndex"></span></p>
+      <h1 id="dTitle"></h1>
+      <div class="mono d-tagrow" id="dTags"></div>
+      <p id="dDesc"></p>
+      <ul id="dBullets"></ul>
+      <div class="d-cta">
+        <p class="mono dim">VALUE FIRST. NO SPAM. UNSUBSCRIBE WHENEVER.</p>
+        <form id="dForm">
+          <input type="email" id="dEmail" placeholder="your@email.com" required />
+          <button type="submit" id="dCta">GET THE PLAYBOOK</button>
+        </form>
+        <p id="dFormDone" class="mono">&#10003; YOU'RE IN. PLAYBOOK INBOUND.</p>
+      </div>
+      <button id="dNext" class="mono">NEXT PLAYBOOK &#8594;</button>
+    </div>
+  </article>
+
+  <div id="loader"><div class="mono" id="loaderText">THE BORING BOT &mdash; LOADING VALUE&hellip;</div></div>
+
+  <script type="module" src="main.js"></script>
+</body>
+</html>
