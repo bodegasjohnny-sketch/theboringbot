@@ -399,6 +399,64 @@ addEventListener('resize', () => {
   renderer.setSize(innerWidth, innerHeight);
 });
 
+/* ================= OFFER (sales page tiers) ================= */
+
+// TODO: swap for your real checkout / booking links (Stripe, GoHighLevel, Calendly).
+// Use one URL or map per tier via the data-tier attribute on each CTA.
+const CHECKOUT_URL = '#';
+
+// Three tiers derived from each playbook: DIY → done-with-you → done-for-you.
+// Prices are placeholders — edit freely.
+function buildOffer(t) {
+  return [
+    {
+      name: 'THE PLAYBOOK', kind: 'DO IT YOURSELF', price: '$49', note: 'one-time',
+      tagline: 'The full system, documented. Run it at your own pace.',
+      features: [
+        `The complete ${t.title} playbook (PDF + templates)`,
+        'Step-by-step SOPs and swipe files',
+        'Lifetime updates as the system evolves',
+      ],
+      cta: 'GET THE PLAYBOOK',
+    },
+    {
+      name: 'DONE WITH YOU', kind: 'BUILD IT TOGETHER', price: '$499', note: '4-week sprint', featured: true,
+      tagline: 'We build it with you, live — so it ships instead of stalling.',
+      features: [
+        'Everything in The Playbook',
+        '4 × 1:1 implementation calls',
+        'Your system mapped to your business',
+        'Async support for the full sprint',
+      ],
+      cta: 'START THE SPRINT',
+    },
+    {
+      name: 'DONE FOR YOU', kind: 'WE DEPLOY IT', price: 'From $2,500', note: 'custom scope',
+      tagline: 'Hands off. We design, build and wire the whole thing.',
+      features: [
+        'We build & deploy the entire system',
+        'AI + automation wired into your stack',
+        'Full handover + 60-day optimization',
+        'Priority line to the lab',
+      ],
+      cta: 'BOOK A BUILD CALL',
+    },
+  ];
+}
+
+function offerHTML(t) {
+  return buildOffer(t).map((o) => `
+    <div class="tier${o.featured ? ' featured' : ''}">
+      ${o.featured ? '<span class="tier-badge">MOST POPULAR</span>' : ''}
+      <span class="tier-kind mono">${o.kind}</span>
+      <h3 class="tier-name">${o.name}</h3>
+      <p class="tier-price">${o.price}<span class="tier-note"> / ${o.note}</span></p>
+      <p class="tier-tagline">${o.tagline}</p>
+      <ul class="tier-features">${o.features.map((f) => `<li>${f}</li>`).join('')}</ul>
+      <a class="tier-cta" href="${CHECKOUT_URL}" data-tier="${o.name}">${o.cta}</a>
+    </div>`).join('');
+}
+
 /* ================= DETAIL PAGE ================= */
 
 const detail = document.getElementById('detail');
@@ -414,6 +472,8 @@ function fillDetail(t, idx) {
   document.getElementById('dTags').innerHTML = t.tags.map((x) => `<i>${x}</i>`).join('') + `<i>${t.year}</i>`;
   document.getElementById('dDesc').textContent = t.desc;
   document.getElementById('dBullets').innerHTML = t.bullets.map((b) => `<li>${b}</li>`).join('');
+  document.getElementById('dOffers').innerHTML = offerHTML(t);
+  detailContent.style.setProperty('--page-accent', t.art.accent);  // theme tiers per card
   detailHero.innerHTML = artHTML(t.art, true);
   const form = document.getElementById('dForm');
   form.classList.remove('done');
@@ -490,6 +550,15 @@ document.getElementById('dForm').addEventListener('submit', (e) => {
   e.currentTarget.classList.add('done');
   document.getElementById('dFormDone').classList.add('show');
   blip(880);
+});
+
+/* offer tier CTAs (placeholder checkout links) */
+document.getElementById('dOffers').addEventListener('click', (e) => {
+  const cta = e.target.closest('.tier-cta');
+  if (!cta) return;
+  blip(820);
+  // Until CHECKOUT_URL points at a real link, swallow the '#' jump.
+  if (cta.getAttribute('href') === '#') e.preventDefault();
 });
 
 /* card clicks (drag-aware) */
