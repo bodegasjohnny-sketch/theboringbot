@@ -318,8 +318,40 @@ body.dragging #stage .card-inner { pointer-events: none; }
   font-style: normal; border: 1px solid var(--line); border-radius: 99px;
   padding: 5px 13px; color: var(--fg);
 }
-#dDesc { font-size: 19px; line-height: 1.6; color: #d4d4cf; max-width: 580px; margin-bottom: 30px; }
+#dDesc { font-size: 19px; line-height: 1.6; color: #d4d4cf; max-width: 580px; margin-bottom: 36px; }
+.d-body { max-width: 580px; margin-bottom: 44px; }
+.d-block { margin-bottom: 26px; }
+.d-block:last-child { margin-bottom: 0; }
+.d-block h3 { font-family: var(--sans); font-weight: 700; font-size: clamp(20px, 2.5vw, 26px); letter-spacing: -0.02em; line-height: 1.1; color: var(--fg); margin-bottom: 9px; }
+.d-block p { font-size: 16px; line-height: 1.64; color: #b9b9b3; }
+.d-block h3::before { content: ""; display: inline-block; width: 22px; height: 2px; background: var(--page-accent, var(--accent)); vertical-align: middle; margin-right: 12px; transform: translateY(-3px); }
 #dBullets { list-style: none; max-width: 580px; margin-bottom: 44px; }
+
+/* key features — contained box */
+.d-features {
+  max-width: 580px; margin-bottom: 28px;
+  background: rgba(255,255,255,0.035);
+  border: 1px solid var(--line); border-radius: 16px;
+  padding: 24px 26px 8px;
+}
+.d-features .d-section-label { margin-bottom: 14px; }
+.d-features #dBullets { max-width: none; margin-bottom: 0; }
+.d-features #dBullets li:last-child { border-bottom: none; }
+
+/* who it's for / who should skip it */
+.d-fit { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; max-width: 580px; margin-bottom: 50px; }
+.d-fit-col { border: 1px solid var(--line); border-radius: 16px; padding: 20px 22px; }
+.d-fit-yes { background: rgba(57,217,138,0.05); border-color: rgba(57,217,138,0.24); }
+.d-fit-no  { background: rgba(244,63,94,0.045); border-color: rgba(244,63,94,0.20); }
+.d-fit-head { letter-spacing: 0.1em; margin-bottom: 12px; }
+.d-fit-yes .d-fit-head { color: #6fdc8c; }
+.d-fit-no  .d-fit-head { color: #f4738a; }
+.d-fit-col ul { list-style: none; }
+.d-fit-col li { font-size: 14px; line-height: 1.5; color: #c2c2bc; padding: 9px 0 9px 22px; position: relative; border-bottom: 1px solid var(--line); }
+.d-fit-col li:last-child { border-bottom: none; padding-bottom: 0; }
+.d-fit-yes li::before { content: "✓"; position: absolute; left: 0; color: #6fdc8c; font-weight: 700; }
+.d-fit-no  li::before { content: "✕"; position: absolute; left: 0; color: #f4738a; font-weight: 700; }
+@media (max-width: 600px) { .d-fit { grid-template-columns: 1fr; } }
 #dBullets li {
   font-size: 15.5px; color: #b9b9b3; line-height: 1.5;
   padding: 13px 0 13px 30px; border-bottom: 1px solid var(--line);

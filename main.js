@@ -12,12 +12,30 @@ const TOPICS = [
   {
     series: 'AI SERIES', title: 'BUILD YOUR DREAM APP USING 1 AI TOOL', tags: ['AI', 'PRODUCTS'], year: '2026',
     art: { type: 'image', src: 'assets/build-dream-app.png', heroSrc: 'assets/build-dream-app-hero.png', heroVideo: 'assets/build-dream-app-hero.mp4', accent: '#ff5a1f', sub: 'IDEA → SHIPPED APP' },
-    desc: 'Go from idea to a working app with a single AI tool — no engineering team, no six-month timeline. The exact workflow to design, build and ship a real product yourself.',
+    desc: "You don't need a dev team, a CTO, or a $40k budget. You need one AI tool, a weekend, and the workflow below. This is how a single person designs, builds and ships a real, working app — then turns it into an asset that earns while they sleep.",
+    body: [
+      { h: 'The old way is a tax on dreamers', p: "Hire developers, wait three to six months, burn your savings on a build you can't change without a change order. That's the toll most people pay to launch an idea — and most never pay it, so they never launch. The toll itself is where the dream quietly dies." },
+      { h: 'One tool replaces the whole team', p: 'Today’s AI build tools handle the design, the front end, the database and the deploy — straight from plain English. You describe what the app should do; it writes it and ships it. Your job stops being “write code” and becomes “make the calls” — and that’s a job you can do right now, with zero engineering background.' },
+      { h: 'Ship the MVP, not the masterpiece', p: "We strip your idea down to the one thing it absolutely must do, build that first, and get it in front of real users in days. Version one is supposed to be a little embarrassing — embarrassing-and-live beats perfect-and-imaginary every single time, because only live software earns money or teaches you anything. And from day one we wire in payments and email capture, so your weekend project starts paying rent instead of sitting in a folder." },
+    ],
     bullets: [
-      'Pick the one AI build tool that replaces a dev team',
-      'Prompt-to-product: turning a plain-English idea into a working app',
-      'The MVP cut — what to build first so you ship in days, not months',
-      'Launch + monetize: from prototype to paying users',
+      'The one AI build tool to use — and the three hyped ones to skip',
+      'A repeatable prompt-to-product workflow you can run on any idea',
+      'The MVP scoping cut that gets you live in days, not months',
+      'How to wire payments and email capture in from day one',
+      'The launch checklist that turns “someday” into “this weekend”',
+    ],
+    forYou: [
+      'You have an idea (or ten) and nothing shipped to show for it',
+      'You need an app or tool for your business but every quote comes back in the tens of thousands',
+      'You can make decisions and follow a process — a coding background is not required',
+      'You’d rather ship something real this month than plan the perfect thing for a year',
+    ],
+    notForYou: [
+      'You want a hands-off “push button, get rich” scheme — this is leverage, but it’s still work',
+      'You need a complex, regulated or mission-critical system live on day one',
+      'You can’t put anything in front of people until it’s flawless',
+      'You’d rather pay an agency and stay completely hands-off',
     ],
   },
   {
@@ -548,7 +566,11 @@ function fillDetail(t, idx) {
   document.getElementById('dTitle').textContent = t.title;
   document.getElementById('dTags').innerHTML = t.tags.map((x) => `<i>${x}</i>`).join('') + `<i>${t.year}</i>`;
   document.getElementById('dDesc').textContent = t.desc;
+  document.getElementById('dBody').innerHTML = (t.body || [])
+    .map((s) => `<section class="d-block"><h3>${s.h}</h3><p>${s.p}</p></section>`).join('');
   document.getElementById('dBullets').innerHTML = t.bullets.map((b) => `<li>${b}</li>`).join('');
+  document.getElementById('dFit').innerHTML = (t.forYou || []).map((b) => `<li>${b}</li>`).join('');
+  document.getElementById('dNotFit').innerHTML = (t.notForYou || []).map((b) => `<li>${b}</li>`).join('');
   document.getElementById('dOffers').innerHTML = offerHTML(t);
   detailContent.style.setProperty('--page-accent', t.art.accent);  // theme tiers per card
   detailHero.innerHTML = artHTML(t.art, true);
