@@ -11,7 +11,7 @@ import { CSS3DRenderer, CSS3DObject } from 'three/addons/renderers/CSS3DRenderer
 const TOPICS = [
   {
     series: 'AI SERIES', title: 'BUILD YOUR DREAM APP USING 1 AI TOOL', tags: ['AI', 'PRODUCTS'], year: '2026',
-    art: { type: 'image', src: 'assets/build-dream-app.png', accent: '#ff5a1f', sub: 'IDEA → SHIPPED APP' },
+    art: { type: 'image', src: 'assets/build-dream-app.png', heroSrc: 'assets/build-dream-app-hero.png', accent: '#ff5a1f', sub: 'IDEA → SHIPPED APP' },
     desc: 'Go from idea to a working app with a single AI tool — no engineering team, no six-month timeline. The exact workflow to design, build and ship a real product yourself.',
     bullets: [
       'Pick the one AI build tool that replaces a dev team',
@@ -204,8 +204,13 @@ const FILTER_CATS = ['ALL', 'FINANCE', 'AI', 'AUTOMATION', 'MARKETING', 'SALES',
 
 function artHTML(a, big = false) {
   if (a.type === 'image') {
-    return `<div class="art art-image"><img src="${a.src}" alt="" draggable="false" />` +
-           (a.sub ? `<span class="sub" style="color:${a.accent}">${a.sub}</span>` : '') + `</div>`;
+    const useHero = big && a.heroSrc;
+    const src = useHero ? a.heroSrc : a.src;
+    return `<div class="art art-image${useHero ? ' art-hero' : ''}">` +
+           `<img src="${src}" alt="" draggable="false" />` +
+           (useHero ? `<span class="hero-glow" style="--g:${a.accent || '#ff5a1f'}"></span>` : '') +
+           (a.sub && !big ? `<span class="sub" style="color:${a.accent}">${a.sub}</span>` : '') +
+           `</div>`;
   }
   const [c1, c2] = a.bg;
   let inner = '';
@@ -480,6 +485,47 @@ const detailContent = document.getElementById('detailContent');
 const detailScrim = document.getElementById('detailScrim');
 let currentIdx = -1;
 
+/* ---- animated 3D hero (ken-burns drift + glow pulse + mouse parallax) ---- */
+let heroState = null;
+const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+function startHeroAnim() {
+  stopHeroAnim();
+  const wrap = detailHero.querySelector('.art-hero');
+  if (!wrap || reduceMotion) return;
+  const img = wrap.querySelector('img');
+  const glow = wrap.querySelector('.hero-glow');
+
+  const tl = gsap.timeline();
+  tl.fromTo(img,
+    { scale: 1.1, xPercent: -1.2, yPercent: -0.8 },
+    { scale: 1.2, xPercent: 1.2, yPercent: 0.8, duration: 18, ease: 'sine.inOut', repeat: -1, yoyo: true });
+  if (glow) tl.fromTo(glow,
+    { opacity: 0.12, scale: 0.92 },
+    { opacity: 0.34, scale: 1.14, duration: 5.5, ease: 'sine.inOut', repeat: -1, yoyo: true }, 0);
+
+  // depth parallax following the cursor
+  const xTo = gsap.quickTo(img, 'x', { duration: 0.9, ease: 'power3' });
+  const yTo = gsap.quickTo(img, 'y', { duration: 0.9, ease: 'power3' });
+  const gxTo = glow ? gsap.quickTo(glow, 'x', { duration: 1.1, ease: 'power3' }) : null;
+  const gyTo = glow ? gsap.quickTo(glow, 'y', { duration: 1.1, ease: 'power3' }) : null;
+  const onMove = (e) => {
+    const cx = e.clientX / innerWidth - 0.5;
+    const cy = e.clientY / innerHeight - 0.5;
+    xTo(cx * -26); yTo(cy * -18);
+    if (gxTo) { gxTo(cx * 22); gyTo(cy * 16); }
+  };
+  detail.addEventListener('pointermove', onMove);
+  heroState = { tl, onMove };
+}
+
+function stopHeroAnim() {
+  if (!heroState) return;
+  heroState.tl.kill();
+  detail.removeEventListener('pointermove', heroState.onMove);
+  heroState = null;
+}
+
 function fillDetail(t, idx) {
   document.getElementById('dSeries').textContent = `[ ${t.series} ]`;
   document.getElementById('dIndex').textContent = `VALUE DROP ${String(idx + 1).padStart(2, '0')} / ${TOPICS.length}`;
@@ -490,6 +536,7 @@ function fillDetail(t, idx) {
   document.getElementById('dOffers').innerHTML = offerHTML(t);
   detailContent.style.setProperty('--page-accent', t.art.accent);  // theme tiers per card
   detailHero.innerHTML = artHTML(t.art, true);
+  startHeroAnim();
   const form = document.getElementById('dForm');
   form.classList.remove('done');
   form.reset();
@@ -532,6 +579,7 @@ function closeDetail() {
   const tl = gsap.timeline({
     onComplete() {
       detail.classList.remove('open');
+      stopHeroAnim();
       detailHero.innerHTML = '';
     },
   });
