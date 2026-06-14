@@ -10,6 +10,17 @@ import { CSS3DRenderer, CSS3DObject } from 'three/addons/renderers/CSS3DRenderer
 
 const TOPICS = [
   {
+    series: 'AI SERIES', title: 'BUILD YOUR DREAM APP USING 1 AI TOOL', tags: ['AI', 'PRODUCTS'], year: '2026',
+    art: { type: 'image', src: 'assets/build-dream-app.png', accent: '#ff5a1f', sub: 'IDEA → SHIPPED APP' },
+    desc: 'Go from idea to a working app with a single AI tool — no engineering team, no six-month timeline. The exact workflow to design, build and ship a real product yourself.',
+    bullets: [
+      'Pick the one AI build tool that replaces a dev team',
+      'Prompt-to-product: turning a plain-English idea into a working app',
+      'The MVP cut — what to build first so you ship in days, not months',
+      'Launch + monetize: from prototype to paying users',
+    ],
+  },
+  {
     series: 'MONEY SERIES', title: 'FINANCE HACKS', tags: ['FINANCE', 'WEALTH'], year: '2026',
     art: { type: 'bars', bg: ['#0b1f16', '#103626'], accent: '#39d98a', word: 'CASH FLOW', sub: 'ROUTING / FEES / YIELD' },
     desc: 'The unsexy banking moves that quietly compound: account routing, fee audits, high-yield parking and automation rules that make every peso and dollar report for duty.',
@@ -192,6 +203,10 @@ const FILTER_CATS = ['ALL', 'FINANCE', 'AI', 'AUTOMATION', 'MARKETING', 'SALES',
 /* ================= CARD ART ================= */
 
 function artHTML(a, big = false) {
+  if (a.type === 'image') {
+    return `<div class="art art-image"><img src="${a.src}" alt="" draggable="false" />` +
+           (a.sub ? `<span class="sub" style="color:${a.accent}">${a.sub}</span>` : '') + `</div>`;
+  }
   const [c1, c2] = a.bg;
   let inner = '';
   switch (a.type) {
