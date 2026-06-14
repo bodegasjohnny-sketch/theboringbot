@@ -138,6 +138,7 @@ body.dragging #stage .card-inner { pointer-events: none; }
 /* animated 3D hero */
 .art-hero { overflow: hidden; }
 .art-hero img { transform: scale(1.1); will-change: transform; }
+.art-hero video { width: 100%; height: 100%; object-fit: cover; display: block; transform: scale(1.06); will-change: transform; }
 .art-hero .hero-glow {
   position: absolute; inset: -15%; pointer-events: none;
   background: radial-gradient(circle at 62% 48%, var(--g, #ff5a1f), transparent 58%);
