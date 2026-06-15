@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Build Your Dream App Using 1 AI Tool — The Boring Bot</title>
+<meta name="description" content="Go from idea to a shipped, working app with one AI tool — no dev team, no $40k budget, no six-month timeline. The exact playbook to design, build and ship it yourself." />
+<meta name="theme-color" content="#0a0a0a" />
+
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Build Your Dream App Using 1 AI Tool" />
+<meta property="og:description" content="One AI tool, a weekend, and the exact workflow to ship a real app that earns while you sleep. Value first." />
+<meta property="og:image" content="../og-image.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Build Your Dream App Using 1 AI Tool" />
+<meta name="twitter:image" content="../og-image.png" />
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Crect width='48' height='48' rx='10' fill='%230a0a0a'/%3E%3Crect x='11' y='15' width='26' height='20' rx='7' fill='none' stroke='white' stroke-width='2.6'/%3E%3Cline x1='24' y1='9' x2='24' y2='15' stroke='white' stroke-width='2.6' stroke-linecap='round'/%3E%3Ccircle cx='24' cy='8' r='2' fill='white'/%3E%3Ccircle cx='19' cy='25' r='2.4' fill='white'/%3E%3Ccircle cx='29' cy='25' r='2.4' fill='white'/%3E%3Cline x1='19' y1='30.5' x2='29' y2='30.5' stroke='white' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+
+<style>
+:root{
+  --bg:#0a0a0a; --fg:#f2f2ef; --dim:#8b8b86; --line:#2a2a27; --accent:#ff5a1f;
+  --mono:"Space Mono",ui-monospace,Menlo,monospace; --sans:"Space Grotesk","Helvetica Neue",Arial,sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--fg);font-family:var(--sans);-webkit-font-smoothing:antialiased;line-height:1.5;}
+.mono{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;}
+.dim{color:var(--dim);}
+.wrap{max-width:780px;margin:0 auto;padding:0 28px;}
+a{color:inherit;}
+::-webkit-scrollbar{width:0;height:0;}
+
+/* ===== HERO ===== */
+.hero{position:relative;min-height:92vh;display:flex;align-items:flex-end;overflow:hidden;}
+.hero video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(1.04);}
+.hero-scrim{position:absolute;inset:0;background:
+  linear-gradient(to top, rgba(8,8,8,.96) 2%, rgba(8,8,8,.55) 38%, rgba(8,8,8,.35) 70%, rgba(8,8,8,.6) 100%),
+  linear-gradient(to right, rgba(8,8,8,.7), rgba(8,8,8,.15) 70%);}
+.hero-glow{position:absolute;inset:-15%;background:radial-gradient(circle at 70% 42%,var(--accent),transparent 58%);opacity:.16;mix-blend-mode:screen;pointer-events:none;}
+.hero-inner{position:relative;width:100%;padding:0 0 64px;}
+.eyebrow{display:flex;gap:18px;color:var(--dim);margin-bottom:18px;}
+.eyebrow b{color:var(--fg);font-weight:400;}
+.hero h1{font-size:clamp(40px,7.4vw,86px);font-weight:700;line-height:.94;letter-spacing:-.04em;text-transform:uppercase;margin-bottom:22px;}
+.tagrow{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:24px;}
+.tagrow i{font-style:normal;font-family:var(--mono);font-size:10px;letter-spacing:.05em;text-transform:uppercase;border:1px solid var(--line);border-radius:99px;padding:5px 13px;background:rgba(0,0,0,.35);}
+.lede{font-size:clamp(16px,2.1vw,20px);line-height:1.6;color:#dcdcd6;max-width:620px;margin-bottom:30px;}
+.cta-row{display:flex;gap:14px;flex-wrap:wrap;align-items:center;}
+.btn{display:inline-block;text-decoration:none;font-family:var(--sans);font-weight:600;font-size:16px;border-radius:99px;padding:15px 30px;cursor:pointer;border:none;transition:transform .25s ease,background .2s;}
+.btn-primary{background:var(--accent);color:#0a0a0a;}
+.btn-primary:hover{transform:scale(1.04);background:#ff6d39;}
+.btn-ghost{background:transparent;color:var(--fg);border:1px solid var(--line);}
+.btn-ghost:hover{border-color:var(--dim);}
+
+/* ===== SECTIONS ===== */
+section.block{padding:14px 0;}
+.story{padding-top:64px;}
+.s-label{color:var(--dim);letter-spacing:.14em;margin-bottom:16px;}
+.s-label.accent{color:var(--accent);}
+.d-block{margin-bottom:30px;max-width:620px;}
+.d-block h3{font-size:clamp(21px,2.7vw,28px);font-weight:700;letter-spacing:-.02em;line-height:1.1;margin-bottom:10px;}
+.d-block h3::before{content:"";display:inline-block;width:22px;height:2px;background:var(--accent);vertical-align:middle;margin-right:12px;transform:translateY(-4px);}
+.d-block p{font-size:16.5px;line-height:1.64;color:#bcbcb6;}
+
+/* features box */
+.features{max-width:620px;margin:18px 0 30px;background:rgba(255,255,255,.035);border:1px solid var(--line);border-radius:16px;padding:24px 26px;}
+.features ul{list-style:none;}
+.features li{font-size:15.5px;line-height:1.5;color:#c9c9c3;padding:13px 0 13px 30px;border-bottom:1px solid var(--line);position:relative;}
+.features li:last-child{border-bottom:none;padding-bottom:0;}
+.features li:first-child{padding-top:0;}
+.features li::before{content:"→";position:absolute;left:2px;color:var(--accent);}
+
+/* who for / not for */
+.fit{display:grid;grid-template-columns:1fr 1fr;gap:14px;max-width:620px;margin:8px 0 40px;}
+.fit-col{border:1px solid var(--line);border-radius:16px;padding:20px 22px;}
+.fit-yes{background:rgba(57,217,138,.05);border-color:rgba(57,217,138,.24);}
+.fit-no{background:rgba(244,63,94,.045);border-color:rgba(244,63,94,.2);}
+.fit-head{letter-spacing:.1em;margin-bottom:12px;}
+.fit-yes .fit-head{color:#6fdc8c;}
+.fit-no .fit-head{color:#f4738a;}
+.fit-col ul{list-style:none;}
+.fit-col li{font-size:14px;line-height:1.5;color:#c2c2bc;padding:9px 0 9px 22px;position:relative;border-bottom:1px solid var(--line);}
+.fit-col li:last-child{border-bottom:none;padding-bottom:0;}
+.fit-yes li::before{content:"✓";position:absolute;left:0;color:#6fdc8c;font-weight:700;}
+.fit-no li::before{content:"✕";position:absolute;left:0;color:#f4738a;font-weight:700;}
+
+/* offer */
+.offer{padding-top:30px;}
+.offer-head{max-width:640px;margin-bottom:26px;}
+.offer-head h2{font-size:clamp(30px,4.6vw,46px);font-weight:700;letter-spacing:-.03em;line-height:1;text-transform:uppercase;margin:10px 0 12px;}
+.offer-head p{font-size:17px;color:#c2c2bc;max-width:520px;}
+.tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+.tier{position:relative;border:1px solid var(--line);border-radius:18px;padding:26px 22px;background:rgba(255,255,255,.025);display:flex;flex-direction:column;}
+.tier.featured{border-color:var(--accent);background:rgba(255,90,31,.06);}
+.tier-badge{position:absolute;top:-10px;left:22px;background:var(--accent);color:#0a0a0a;font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding:4px 10px;border-radius:99px;font-weight:700;}
+.tier-kind{color:var(--dim);margin-bottom:8px;}
+.tier-name{font-size:21px;font-weight:700;letter-spacing:-.01em;margin-bottom:10px;}
+.tier-price{font-size:30px;font-weight:700;letter-spacing:-.02em;margin-bottom:4px;}
+.tier-price span{font-size:13px;font-weight:400;color:var(--dim);}
+.tier-tagline{font-size:14px;color:#bcbcb6;line-height:1.5;margin:10px 0 16px;}
+.tier-features{list-style:none;margin-bottom:22px;flex:1;}
+.tier-features li{font-size:13.5px;color:#c2c2bc;line-height:1.45;padding:8px 0 8px 20px;position:relative;border-top:1px solid var(--line);}
+.tier-features li::before{content:"✓";position:absolute;left:0;color:var(--accent);}
+.tier-cta{display:block;text-align:center;text-decoration:none;font-family:var(--mono);font-weight:700;font-size:11px;letter-spacing:.06em;text-transform:uppercase;padding:14px;border-radius:99px;border:1px solid var(--line);color:var(--fg);transition:all .2s;}
+.tier-cta:hover{border-color:var(--fg);}
+.tier.featured .tier-cta{background:var(--accent);color:#0a0a0a;border-color:var(--accent);}
+.tier.featured .tier-cta:hover{background:#ff6d39;}
+.guarantee{text-align:center;color:var(--dim);margin:26px 0 0;letter-spacing:.06em;}
+
+/* free starter */
+.starter{margin:56px 0 0;padding:34px 28px;border:1px solid var(--line);border-radius:18px;background:rgba(255,255,255,.02);text-align:center;}
+.starter p.k{margin-bottom:14px;}
+.starter form{display:flex;gap:8px;max-width:480px;margin:0 auto;}
+.starter input{flex:1;background:rgba(255,255,255,.06);border:1px solid var(--line);border-radius:99px;padding:15px 22px;color:var(--fg);font-family:var(--mono);font-size:13px;outline:none;}
+.starter input:focus{border-color:var(--dim);}
+.starter button{border:none;cursor:pointer;white-space:nowrap;background:var(--fg);color:#0a0a0a;border-radius:99px;font-family:var(--mono);font-weight:700;font-size:12px;letter-spacing:.06em;padding:15px 24px;transition:transform .25s ease;}
+.starter button:hover{transform:scale(1.04);}
+.starter .done{display:none;color:#6fdc8c;margin-top:14px;}
+.starter.sent form{display:none;}
+.starter.sent .done{display:block;}
+
+/* footer */
+footer{margin-top:64px;padding:40px 0 60px;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;}
+footer .brand{display:flex;align-items:center;gap:12px;}
+footer svg{width:34px;height:34px;}
+footer a.back{text-decoration:none;color:var(--dim);border:1px solid var(--line);border-radius:99px;padding:9px 18px;transition:color .2s,border-color .2s;}
+footer a.back:hover{color:var(--fg);border-color:var(--dim);}
+
+@media(max-width:680px){
+  .tiers{grid-template-columns:1fr;}
+  .fit{grid-template-columns:1fr;}
+  .hero{min-height:88vh;}
+}
+</style>
+</head>
+<body>
+
+  <!-- ===== HERO ===== -->
+  <header class="hero">
+    <video src="../assets/build-dream-app-hero.mp4" poster="../assets/build-dream-app-hero.png" autoplay muted loop playsinline preload="auto"></video>
+    <div class="hero-scrim"></div>
+    <span class="hero-glow"></span>
+    <div class="hero-inner">
+      <div class="wrap">
+        <p class="eyebrow mono"><span>[ AI SERIES ]</span><b>THE BORING BOT</b></p>
+        <h1>Build Your Dream App Using 1 AI Tool</h1>
+        <div class="tagrow"><i>AI</i><i>PRODUCTS</i><i>2026</i></div>
+        <p class="lede">You don't need a dev team, a CTO, or a $40k budget. You need one AI tool, a weekend, and the workflow inside. This is how a single person designs, builds and ships a real, working app — then turns it into an asset that earns while they sleep.</p>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="#offer">Get the playbook &#8594;</a>
+          <a class="btn btn-ghost" href="#starter">Grab the free starter</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+
+    <!-- ===== STORY ===== -->
+    <section class="block story">
+      <div class="d-block"><h3>The old way is a tax on dreamers</h3><p>Hire developers, wait three to six months, burn your savings on a build you can't change without a change order. That's the toll most people pay to launch an idea — and most never pay it, so they never launch. The toll itself is where the dream quietly dies.</p></div>
+      <div class="d-block"><h3>One tool replaces the whole team</h3><p>Today's AI build tools handle the design, the front end, the database and the deploy — straight from plain English. You describe what the app should do; it writes it and ships it. Your job stops being "write code" and becomes "make the calls" — and that's a job you can do right now, with zero engineering background.</p></div>
+      <div class="d-block"><h3>Ship the MVP, not the masterpiece</h3><p>We strip your idea down to the one thing it absolutely must do, build that first, and get it in front of real users in days. Version one is supposed to be a little embarrassing — embarrassing-and-live beats perfect-and-imaginary every single time, because only live software earns money or teaches you anything. And from day one we wire in payments and email capture, so your weekend project starts paying rent instead of sitting in a folder.</p></div>
+    </section>
+
+    <!-- ===== KEY FEATURES ===== -->
+    <p class="s-label mono accent">WHAT'S INSIDE THE PLAYBOOK</p>
+    <div class="features">
+      <ul>
+        <li>The one AI build tool to use — and the three hyped ones to skip</li>
+        <li>A repeatable prompt-to-product workflow you can run on any idea</li>
+        <li>The MVP scoping cut that gets you live in days, not months</li>
+        <li>How to wire payments and email capture in from day one</li>
+        <li>The launch checklist that turns &ldquo;someday&rdquo; into &ldquo;this weekend&rdquo;</li>
+      </ul>
+    </div>
+
+    <!-- ===== WHO FOR / NOT FOR ===== -->
+    <div class="fit">
+      <div class="fit-col fit-yes">
+        <p class="fit-head mono">BUILD THIS IF YOU&hellip;</p>
+        <ul>
+          <li>Have an idea (or ten) and nothing shipped to show for it</li>
+          <li>Need an app or tool for your business but every quote comes back in the tens of thousands</li>
+          <li>Can make decisions and follow a process — a coding background is not required</li>
+          <li>Would rather ship something real this month than plan the perfect thing for a year</li>
+        </ul>
+      </div>
+      <div class="fit-col fit-no">
+        <p class="fit-head mono">SKIP IT IF YOU&hellip;</p>
+        <ul>
+          <li>Want a hands-off &ldquo;push button, get rich&rdquo; scheme — this is leverage, but it's still work</li>
+          <li>Need a complex, regulated or mission-critical system live on day one</li>
+          <li>Can't put anything in front of people until it's flawless</li>
+          <li>Would rather pay an agency and stay completely hands-off</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ===== OFFER ===== -->
+    <section class="block offer" id="offer">
+      <div class="offer-head">
+        <p class="s-label mono accent">CHOOSE HOW YOU RUN IT</p>
+        <h2>Three ways to put this to work</h2>
+        <p>Steal it solo, build it with us, or hand us the keys — same system, you pick the speed.</p>
+      </div>
+      <div class="tiers">
+        <div class="tier">
+          <span class="tier-kind mono">DO IT YOURSELF</span>
+          <h3 class="tier-name">THE PLAYBOOK</h3>
+          <p class="tier-price">$49<span> / one-time</span></p>
+          <p class="tier-tagline">The full system, documented. Run it at your own pace.</p>
+          <ul class="tier-features">
+            <li>The complete Build Your Dream App playbook (PDF + templates)</li>
+            <li>Step-by-step SOPs and swipe files</li>
+            <li>Lifetime updates as the system evolves</li>
+          </ul>
+          <a class="tier-cta" href="#" data-tier="THE PLAYBOOK">GET THE PLAYBOOK</a>
+        </div>
+        <div class="tier featured">
+          <span class="tier-badge">MOST POPULAR</span>
+          <span class="tier-kind mono">BUILD IT TOGETHER</span>
+          <h3 class="tier-name">DONE WITH YOU</h3>
+          <p class="tier-price">$499<span> / 4-week sprint</span></p>
+          <p class="tier-tagline">We build it with you, live — so it ships instead of stalling.</p>
+          <ul class="tier-features">
+            <li>Everything in The Playbook</li>
+            <li>4 &times; 1:1 implementation calls</li>
+            <li>Your system mapped to your business</li>
+            <li>Async support for the full sprint</li>
+          </ul>
+          <a class="tier-cta" href="#" data-tier="DONE WITH YOU">START THE SPRINT</a>
+        </div>
+        <div class="tier">
+          <span class="tier-kind mono">WE DEPLOY IT</span>
+          <h3 class="tier-name">DONE FOR YOU</h3>
+          <p class="tier-price">From $2,500<span> / custom</span></p>
+          <p class="tier-tagline">Hands off. We design, build and wire the whole thing.</p>
+          <ul class="tier-features">
+            <li>We build &amp; deploy the entire system</li>
+            <li>AI + automation wired into your stack</li>
+            <li>Full handover + 60-day optimization</li>
+            <li>Priority line to the lab</li>
+          </ul>
+          <a class="tier-cta" href="#" data-tier="DONE FOR YOU">BOOK A BUILD CALL</a>
+        </div>
+      </div>
+      <p class="guarantee mono">&#8634; 14&#8209;DAY MONEY&#8209;BACK ON EVERY TIER &middot; NO LOCK&#8209;IN &middot; CANCEL ANYTIME</p>
+    </section>
+
+    <!-- ===== FREE STARTER ===== -->
+    <section class="starter" id="starter">
+      <p class="k mono dim">NOT READY? GRAB THE FREE STARTER — VALUE FIRST, NO SPAM.</p>
+      <form id="starterForm">
+        <input type="email" id="starterEmail" placeholder="your@email.com" required />
+        <button type="submit">SEND ME THE FREE STARTER</button>
+      </form>
+      <p class="done mono">&#10003; YOU'RE IN. STARTER INBOUND.</p>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer>
+      <div class="brand">
+        <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="8" y="12" width="32" height="26" rx="9" stroke="white" stroke-width="3.4"/>
+          <line x1="24" y1="5" x2="24" y2="12" stroke="white" stroke-width="3.4" stroke-linecap="round"/>
+          <circle cx="24" cy="4.5" r="2.6" fill="white"/><circle cx="17.5" cy="25" r="3" fill="white"/>
+          <circle cx="30.5" cy="25" r="3" fill="white"/><line x1="17" y1="33" x2="31" y2="33" stroke="white" stroke-width="2.6" stroke-linecap="round"/>
+        </svg>
+        <span class="mono dim">THE BORING BOT &middot; VALUE FIRST</span>
+      </div>
+      <a class="back mono" href="../">&#8592; ALL PLAYBOOKS</a>
+    </footer>
+
+  </main>
+
+  <script>
+    // ensure the hero video autoplays reliably
+    (function(){
+      var v=document.querySelector('.hero video');
+      if(v){ v.muted=true; var p=v.play&&v.play(); if(p&&p.catch)p.catch(function(){}); }
+    })();
+    // free-starter form (placeholder — wire to GHL webhook later)
+    document.getElementById('starterForm').addEventListener('submit',function(e){
+      e.preventDefault();
+      document.getElementById('starter').classList.add('sent');
+    });
+    // tier CTAs are '#' placeholders until checkout/GHL links are added
+    document.querySelectorAll('.tier-cta').forEach(function(a){
+      a.addEventListener('click',function(e){ if(a.getAttribute('href')==='#') e.preventDefault(); });
+    });
+  </script>
+</body>
+</html>
