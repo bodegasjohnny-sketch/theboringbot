@@ -8,6 +8,18 @@ This is **Phase 2 v1**: a working chat app with a **demo mode** that runs with n
 API key (so it's testable anywhere), and a **live mode** wired for the Claude Agent
 SDK that activates automatically when a key is present.
 
+## Zero-setup preview (GitHub Pages)
+
+`demo/` is a fully static version — the demo brain runs entirely in the browser,
+no server or Node needed. With GitHub Pages enabled on this branch it's live at:
+
+```
+https://<user>.github.io/theboringbot/app-builder-web/demo/
+```
+
+Enable it once: repo **Settings → Pages → Deploy from a branch** → pick this
+branch, folder `/ (root)`.
+
 ## Run it
 
 No build step, no dependencies required for demo mode (Node 22+):

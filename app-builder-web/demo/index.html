@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AppBuilder — demo (runs entirely in your browser)</title>
+  <link rel="stylesheet" href="./styles.css">
+  <link rel="icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg==">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">App<span>Builder</span></div>
+    <div class="mode demo" id="mode">static demo — no server</div>
+  </header>
+
+  <main class="split">
+    <section class="chat" aria-label="Chat">
+      <div class="messages" id="messages">
+        <div class="msg assistant">
+          <div class="bubble">
+            Describe an app or site you want to build. I won't start coding — I'll
+            interview you first, write a spec, then build it and render a live preview
+            on the right.
+
+This is the static demo: the interview is scripted and runs entirely in your browser. The real product runs the same flow on live Claude.
+          </div>
+        </div>
+      </div>
+      <form class="composer" id="composer">
+        <textarea id="input" rows="2" placeholder="e.g. a landing page for my coffee subscription…" autocomplete="off"></textarea>
+        <button type="submit" id="send">Send</button>
+      </form>
+    </section>
+
+    <section class="preview" aria-label="Live preview">
+      <div class="preview-head">
+        <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+        <span class="preview-label">Live preview</span>
+      </div>
+      <iframe id="preview" title="Live preview" sandbox="allow-same-origin"></iframe>
+      <div class="preview-empty" id="previewEmpty">Your built app will appear here.</div>
+    </section>
+  </main>
+
+  <script src="./app.js"></script>
+</body>
+</html>
